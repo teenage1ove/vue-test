@@ -1,44 +1,47 @@
 <template>
 	<div class="post">
-		<div>
-			<div><strong>Название </strong>{{ post.title }}</div>
-			<div><strong>Пост </strong>{{ post.body }}</div>
-		</div>
-
-		<div class="post__btns">
-			<my-button @click='removePost'>Удалить</my-button>
-		</div>
+	  <div>
+		<div>{{ post.id }}</div>
+		<div><strong>Название:</strong> {{ post.title }}</div>
+		<div><strong>Описание:</strong> {{ post.body }}</div>
+	  </div>
+	  <div class="post__btns">
+		<my-button
+		  @click="$router.push(`/posts/${post.id}`)"
+		>
+		  Открыть
+		</my-button>
+	   <my-button
+		 @click="$emit('remove', post)"
+	   >
+		 Удалить
+	   </my-button>
+	  </div>
 	</div>
-</template>
-
-<script>
-
-
-export default {
-
+  </template>
+  
+  <script>
+  export default {
 	props: {
-		post: {
-			type: Object,
-			required: true,
-		},
-	},
-
-	methods: {
-		removePost() {
-			this.$emit('remove', this.post)
-		}
+	  post: {
+		type: Object,
+		required: true,
+	  }
 	}
-}
-</script>
-
-<style lang="scss" scoped>
-.post {
-	border: 2px solid rgb(0, 133, 102);
+  }
+  </script>
+  
+  <style scoped>
+  .post {
 	padding: 15px;
-	margin: 15px 0;
-
+	border: 2px solid teal;
+	margin-top: 15px;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
-}
-</style>
+	justify-content: space-between;
+  }
+  .post__btns {
+	display: flex;
+	gap: 15px;
+  }
+  </style>
