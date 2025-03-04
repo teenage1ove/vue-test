@@ -1,10 +1,11 @@
-import About from '@/pages/About.vue'
-import Main from '@/pages/Main.vue'
-import PostPageId from '@/pages/PostPageId.vue'
-import PostsPage from '@/pages/PostsPage.vue'
-import PostsPageCompositionApi from '@/pages/PostsPageCompositionApi.vue'
-import PostsPageWithStore from '@/pages/PostsPageWithStore.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import Main from "@/pages/Main";
+import {createRouter, createWebHistory} from "vue-router";
+import UserPage from "@/pages/UserPage";
+import About from "@/pages/About";
+import PostIdPage from "@/pages/PostIdPage";
+import PostPageWithStore from "@/pages/PostPageWithStore";
+import PostPageCompositionApi from "@/pages/PostPageCompositionApi";
+
 
 const routes = [
     {
@@ -13,24 +14,25 @@ const routes = [
     },
     {
         path: '/posts',
-        component: PostsPage
-    },
-    {
-        path: '/posts/:id',
-        component: PostPageId
+        component: UserPage
     },
     {
         path: '/about',
         component: About
     },
     {
+        path: '/posts/:id',
+        component: PostIdPage
+    },
+    {
         path: '/store',
-        component: PostsPageWithStore
+        component: PostPageWithStore
     },
     {
         path: '/composition',
-        component: PostsPageCompositionApi
+        component: PostPageCompositionApi
     },
+
 ]
 
 const router = createRouter({
@@ -38,4 +40,4 @@ const router = createRouter({
     history: createWebHistory(process.env.BASE_URL)
 })
 
-export default router
+export default router;
